@@ -50,9 +50,9 @@ app.get('/api/notes/:notes_id', (req, res) => {
           return;
         }
       }
-      res.status(404).send('Review not found');
+      res.status(404).send('Note not found');
     } else {
-      res.status(400).send('Review ID not provided');
+      res.status(400).send('Note ID not provided');
     }
   });
 
