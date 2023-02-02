@@ -72,7 +72,7 @@ app.post('/api/notes', (req, res) => {
             body: newNote,
         };
        
-      console.log(resposne);
+      console.log(response);
       res.status(201).json(response);  
     } else {
         res.status(500).json('Error in posting note');
