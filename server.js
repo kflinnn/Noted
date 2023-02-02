@@ -26,10 +26,6 @@ app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
-//Wildcard route to direct users to the html file
-app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/assets/js/index.html'))
-);
 
 //API route that returns all saved notes as JSON
 app.get('/api/notes', (req, res) => {
@@ -66,7 +62,7 @@ app.post('/api/notes', (req, res) => {
             text,
             notes_id: uuid(),
         };
-
+          //fs. here
         const response = {
             status: 'success',
             body: newNote,
@@ -75,9 +71,14 @@ app.post('/api/notes', (req, res) => {
       console.log(response);
       res.status(201).json(response);  
     } else {
-        res.status(500).json('Error in posting note');
+        res.status(400).json('Error in posting note');
     }
 });
+
+//Wildcard route to direct users to the html file
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/assets/js/index.html'))
+);
 
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT}`)
