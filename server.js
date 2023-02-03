@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const { clog } = require('./middleware/clog');
+const fs = require('fs');
 //Helper method for generating unique ids
 const uuid = require('./helpers/uuid');
 
@@ -62,12 +63,35 @@ app.post('/api/notes', (req, res) => {
             text,
             notes_id: uuid(),
         };
-          //fs. here
-        const response = {
-            status: 'success',
-            body: newNote,
-        };
+
+//obtaining existing notes
+        fs.readFile('./db/db.json', 'utf8', (err, data) => {
+          if (err) {
+            console.error(err);
+          } else {
+            // Convert string into JSON object
+            const parsedNotes = JSON.parse(data);
+    
+            // Add a new review
+            parsedNotes.push(newNote);
+    
+            // Write updated reviews back to the file
+            fs.writeFile(
+              './db/db.json',
+              JSON.stringify(parsedNotes, null, 4),
+              (writeErr) =>
+                writeErr
+                  ? console.error(writeErr)
+                  : console.info('Successfully updated notes!')
+            );
+          }
+        });
        
+        const response = {
+          status: 'success',
+          body: newNote,
+        };
+
       console.log(response);
       res.status(201).json(response);  
     } else {
