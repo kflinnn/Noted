@@ -30,28 +30,18 @@ app.get('/notes', (req, res) =>
 
 //API route that returns all saved notes as JSON
 app.get('/api/notes', (req, res) => {
-    console.info(`GET /api/notes`);
-    res.status(200).json(noteData);
-});
-
-//GET a single note
-
-app.get('/api/notes/:notes_id', (req, res) => {
-    if (req.params.notes_id) {
-      console.info(`${req.method} request received to get a single a review`);
-      const noteId = req.params.notes_id;
-      for (let i = 0; i < noteData.length; i++) {
-        const currentNote = noteData[i];
-        if (currentNote.notes_id === noteId) {
-          res.json(currentNote);
-          return;
-        }
-      }
-      res.status(404).send('Note not found');
-    } else {
-      res.status(400).send('Note ID not provided');
+  // console.log("notedata", noteData);  
+  // console.info(`GET /api/notes`);
+  //   res.status(200).json(noteData);
+  fs.readFile('./db/db.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
     }
+    res.send(data);
+})
   });
+
+
 
 //Post request to add a note 
 app.post('/api/notes', (req, res) => {
@@ -61,7 +51,7 @@ app.post('/api/notes', (req, res) => {
         const newNote = {
             title,
             text,
-            notes_id: uuid(),
+            id: uuid(),
         };
 
 //obtaining existing notes
@@ -72,31 +62,43 @@ app.post('/api/notes', (req, res) => {
             // Convert string into JSON object
             const parsedNotes = JSON.parse(data);
     
-            // Add a new review
+            // Add a new note
             parsedNotes.push(newNote);
-    
-            // Write updated reviews back to the file
+            console.log(newNote.id);
+            // Write updated notes back to the file
             fs.writeFile(
               './db/db.json',
               JSON.stringify(parsedNotes, null, 4),
-              (writeErr) =>
+              (writeErr) => {
                 writeErr
                   ? console.error(writeErr)
                   : console.info('Successfully updated notes!')
+                  console.log('parsedNotes', parsedNotes);
+                  res.json(parsedNotes) }
             );
           }
         });
        
-        const response = {
-          status: 'success',
-          body: newNote,
-        };
+        // const response = {
+        //   status: 'success',
+        //   body: newNote,
+        // };
 
-      console.log(response);
-      res.status(201).json(response);  
-    } else {
+      // console.log(response);
+      // res.status(201).json(response); 
+        } else {
         res.status(400).json('Error in posting note');
     }
+});
+
+//GET a single note
+
+app.delete('/api/notes/:id', (req, res) => {
+  if (req.params.id) {
+console.log(req.params);
+const note = req.params.id;
+console.log(note);
+}
 });
 
 //Wildcard route to direct users to the html file
