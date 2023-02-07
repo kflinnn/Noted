@@ -24,13 +24,17 @@ POST Request to add a note:
 
 ![Screen Shot 2023-02-02 at 8 16 51 PM](https://user-images.githubusercontent.com/116764540/216487853-a1887e7b-a8fe-46b4-a56c-66f2538b87ea.png)
 
+DELETE Request to remove a note:
+
+![Screen Shot 2023-02-06 at 10 13 15 PM](https://user-images.githubusercontent.com/116764540/217139084-a2133e9b-f898-43bb-a08e-a9c86a664af9.png)
+
 Functions to append JSON file:
 
 ![Screen Shot 2023-02-02 at 8 17 57 PM](https://user-images.githubusercontent.com/116764540/216487995-118edef0-c136-48ca-8831-82fd22b4644f.png)
 
 Deployed App:
 
-![Screen Shot 2023-02-02 at 8 18 57 PM](https://user-images.githubusercontent.com/116764540/216488086-a45715e2-bc1d-460f-bb90-bbf622c73f00.png)
+![Screen Shot 2023-02-06 at 10 11 16 PM](https://user-images.githubusercontent.com/116764540/217138791-4c792458-167e-47f0-acf4-a6a4e162d6d9.png)
 
 ## License
 
