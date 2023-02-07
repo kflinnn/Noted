@@ -30,9 +30,6 @@ app.get('/notes', (req, res) =>
 
 //API route that returns all saved notes as JSON
 app.get('/api/notes', (req, res) => {
-  // console.log("notedata", noteData);  
-  // console.info(`GET /api/notes`);
-  //   res.status(200).json(noteData);
   fs.readFile('./db/db.json', 'utf8', (err, data) => {
     if (err) {
       console.error(err);
@@ -83,7 +80,7 @@ app.post('/api/notes', (req, res) => {
     }
 });
 
-//GET a single note
+//DELETE a single note
 
 app.delete('/api/notes/:id', (req, res) => {
 const note = req.params.id;
