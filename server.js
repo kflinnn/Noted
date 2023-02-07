@@ -78,14 +78,6 @@ app.post('/api/notes', (req, res) => {
             );
           }
         });
-       
-        // const response = {
-        //   status: 'success',
-        //   body: newNote,
-        // };
-
-      // console.log(response);
-      // res.status(201).json(response); 
         } else {
         res.status(400).json('Error in posting note');
     }
@@ -94,11 +86,20 @@ app.post('/api/notes', (req, res) => {
 //GET a single note
 
 app.delete('/api/notes/:id', (req, res) => {
-  if (req.params.id) {
-console.log(req.params);
 const note = req.params.id;
-console.log(note);
+console.log(noteData[1].id);
+for (let i = 0; i < noteData.length; i++) {
+  if (note === noteData[i].id) {
+  noteData.splice(i, 1)
+  }
 }
+fs.writeFile (
+  './db/db.json',
+JSON.stringify(noteData),
+(writeErr) => {
+  if (writeErr) throw error;
+    res.json("Note deleted!") }
+);
 });
 
 //Wildcard route to direct users to the html file

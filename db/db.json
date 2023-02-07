@@ -5,26 +5,6 @@
         "id": "4ka7"
     },
     {
-        "title": "kelley",
-        "text": "note",
-        "id": "7de2"
-    },
-    {
-        "title": "kelley",
-        "text": "note",
-        "id": "80a1"
-    },
-    {
-        "title": "testing",
-        "text": "please work",
-        "id": "301d"
-    },
-    {
-        "title": "another test",
-        "text": "maybe this one will render?",
-        "id": "570c"
-    },
-    {
         "title": "maybe this time",
         "text": "i'll be lucky",
         "id": "10fa"
@@ -33,11 +13,6 @@
         "title": "how about now?",
         "text": "alsdfj",
         "id": "8d78"
-    },
-    {
-        "title": "anotha one",
-        "text": "here",
-        "id": "1aca"
     },
     {
         "title": "here is another test",
@@ -53,5 +28,15 @@
         "title": "latest test",
         "text": "asldkfj",
         "id": "64a7"
+    },
+    {
+        "title": "adding another one",
+        "text": "here it is ",
+        "id": "bc4b"
+    },
+    {
+        "title": "kelley",
+        "text": "this still works?\n",
+        "id": "74d0"
     }
 ]
